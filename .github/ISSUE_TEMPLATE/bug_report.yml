@@ -16,6 +16,18 @@ body:
       placeholder: "RTX 4080 SUPER, 621.24, Windows 11"
     validations:
       required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Where the issue occurs
+      options:
+        - V3 pool mining
+        - V3 local test
+        - Panel or GPU controls
+        - V4 FP8 local development test
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: repro
     attributes:
