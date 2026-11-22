@@ -1,8 +1,14 @@
-# Quartz-Miner for Pearl V3-V4
+# Quartz-Miner
 
 ![Quartz-Miner logo](images/logo.png)
 
 Quartz-Miner is a Windows miner for Pearl (PRL) V3. Version 1.0.12 is optimized for **NVIDIA GeForce RTX 40 series**. The panel manages Stratum destinations, GPU selection, live telemetry, thermal limits, and named tuning profiles.
+
+## Pearl V4 / FP8 development status
+
+Quartz integrates experimental V4 job and GPU routing. In local PearlGateway tests, a factory-profile RTX 4070 Ti computed fresh FP8 tickets for V4 jobs. Rust verified each proof before submission and the receiving service verified the same bytes. When the job changed during CUDA execution, Quartz withheld the superseded proof and sent only the current one.
+
+**The public ZIP mines V3.** B24 remains the production engine for eligible Ada GPUs. FP8 Ada is disabled in production pending Pearl profile admission and validation with a compatible testnet pool. Local gateway results do not establish mainnet or pool support. RTX 50 hardware testing is pending.
 
 ## NVIDIA GPU compatibility
 
@@ -11,7 +17,7 @@ Quartz-Miner is a Windows miner for Pearl (PRL) V3. Version 1.0.12 is optimized 
 | **RTX 4070 Ti and RTX 4080 SUPER** | Optimized B24 (Ada SM 8.9) | Both models tested on hardware with Rust-verified work and accepted Pearl V3 pool shares |
 | **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each selected model locally before pool mining |
 | **RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
-| **RTX 50 and Blackwell workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical RTX 50 and workstation testing is pending |
+| **RTX 50 and Blackwell workstation GPUs** | V3 native CUDA compatibility mode | Driver and device checks apply. RTX 50 has not been tested on hardware. V4 on RTX 50 is not qualified |
 | **Hopper and Blackwell data center GPUs** | Native CUDA compatibility mode if the Windows driver supports the device | Device qualification is pending |
 | **RTX 20, GTX, AMD and Intel** | Unsupported in this release | The packaged engine requires an Ampere-class CUDA device or later |
 
@@ -25,7 +31,7 @@ Autotuning is available on the two qualified models. Clock, fan, voltage and pow
 
 1. Download `Quartz-Miner-v1.0.12-win-x64.zip` and `SHA256SUMS.txt` from [Releases](https://github.com/xxfalaxx/Quartz-Miner/releases). Compare the archive hash with the published SHA-256.
 2. Extract the entire ZIP to a local folder and open `Quartz-Miner.Panel.exe`. The package includes its .NET and Visual C++ runtimes. When Windows requests elevation, GPU controls use the administrator context.
-3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. The initial configuration is empty.
+3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. A fresh installation starts with blank account fields and no saved destinations or GPU profiles.
 4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. **Reset this GPU** restores the driver defaults for that card.
 5. Use **Stop** before closing the panel. The panel attempts to restore settings it applied for the mining session.
 
