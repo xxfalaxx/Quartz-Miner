@@ -8,14 +8,16 @@ Quartz-Miner is a Windows miner for Pearl (PRL) V3. Version 1.0.12 is optimized 
 
 | GPU family | Engine in 1.0.12 | Validation |
 | --- | --- | --- |
-| **RTX 4070 Ti and RTX 4080 SUPER** | Optimized RTX 40 mode | Tested on physical cards with verified Pearl work and Stratum |
-| **Other RTX 40 and Ada workstation GPUs** | Optimized RTX 40 mode | The miner verifies a local workload on each selected card before connecting |
+| **RTX 4070 Ti and RTX 4080 SUPER** | Optimized B24 (Ada SM 8.9) | Both models tested on hardware with Rust-verified work and accepted Pearl V3 pool shares |
+| **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each selected model locally before pool mining |
 | **RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
 | **RTX 50 and Blackwell workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical RTX 50 and workstation testing is pending |
 | **Hopper and Blackwell data center GPUs** | Native CUDA compatibility mode if the Windows driver supports the device | Device qualification is pending |
 | **RTX 20, GTX, AMD and Intel** | Unsupported in this release | The packaged engine requires an Ampere-class CUDA device or later |
 
-Compatibility mode checks the selected hardware and verifies a local workload before connecting to the pool. A mixed rig uses compatibility mode for all selected cards. [NVIDIA GPU compute capabilities](https://developer.nvidia.com/cuda/gpus)
+Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada GPUs keep the optimized B24 kernel while eligible Ampere, Hopper and Blackwell GPUs use the compatibility image. The panel verifies work from each compatibility GPU against Rust before starting pool mining. All selected GPUs share one Stratum connection.
+
+**Mixed-rig test coverage.** A local Stratum test loaded both images on two physical Ada cards. The RTX 4080 SUPER ran B24 and the RTX 4070 Ti was deliberately assigned the compatibility image. An independent Rust verifier accepted 12 distinct proofs across the two cards. Physical rigs combining different GPU generations are still awaiting testing. [NVIDIA GPU compute capabilities](https://developer.nvidia.com/cuda/gpus)
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
