@@ -23,11 +23,36 @@ Autotuning is available on the two qualified models. Clock, fan, voltage and pow
 
 1. Download `Quartz-Miner-v1.0.12-win-x64.zip` and `SHA256SUMS.txt` from [Releases](https://github.com/xxfalaxx/Quartz-Miner/releases). Compare the archive hash with the published SHA-256.
 2. Extract the entire ZIP to a local folder and open `Quartz-Miner.Panel.exe`. The package includes its .NET and Visual C++ runtimes. When Windows requests elevation, GPU controls use the administrator context.
-3. Open **Pools and destinations**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. The initial configuration is empty.
+3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. The initial configuration is empty.
 4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. **Reset this GPU** restores the driver defaults for that card.
 5. Use **Stop** before closing the panel. The panel attempts to restore settings it applied for the mining session.
 
 Windows x64 and a supported NVIDIA display driver are required. Driver 621.24 was used for qualification. NVIDIA driver branch R620 or later is recommended for the included CUDA 13.5 images. Normal mining uses the bundled runtimes and requires no CUDA Toolkit, Python, Rust, or separate .NET installation. The optional external voltage-curve control requires a compatible MSI Afterburner installation on cards without native calibrated voltage controls. [CUDA driver requirements](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/)
+
+## Create a Pearl wallet
+
+1. Download the Windows installer from [Pearl Research Labs' official desktop wallet release](https://github.com/pearl-research-labs/pearl/releases/tag/pearl-wallet-v3.0.0).
+2. Open the wallet, create a new wallet, and follow the official guide to [back up your recovery phrase](https://help.pearlresearch.ai/hc/en-us/articles/49188981821457-Backing-up-your-wallet). Keep the phrase offline.
+3. Copy a Pearl mainnet receiving address (typically `prl1p…`) and paste only that public address into **Mining destination**. If your pool uses a mining account instead, use the account format it specifies.
+
+Use the [official Pearl block explorer](https://explorer.pearlresearch.ai/) to check a public address or block. Quartz-Miner never needs your recovery phrase or private keys.
+
+## Pearl spot markets
+
+- [SafeTrade · PEARL/USDT](https://safetrade.com/exchange/PEARL-USDT)
+- [BigONE · PEARL/USDT](https://big.one/en/trade/PEARL-USDT)
+- [Gate · PEARL/USDT](https://www.gate.com/trade/PEARL_USDT)
+
+Look for Pearl Research Labs' **PEARL** asset. Some exchanges previously used **PRL**, which can also refer to a different asset. Check native Pearl deposit and withdrawal availability for your account before transferring.
+
+## Panel update — November 22, 2026
+
+- The mining-destination icon highlights the setup entry until a valid destination is applied.
+- The mining log reports block candidates with GPU and height. The dashboard checks the most recent candidate's exact hash against the canonical block at that height. Older records without a block hash remain unverified.
+- The sidebar displays the Pearl icon alongside the wallet balance.
+- Live core control verifies the requested clock under load. Supported manual settings can be sent during mining. Voltage changes and large core increases ask for confirmation.
+- Automatic fan control regulates each GPU independently. Simulated checks cover fan speed reduction below the limit and stopping at the limit or after losing telemetry.
+- Autotuning shows live test data. A completed validation can be saved and applied to one or all validated GPUs. Stop mining before loading a new autotuned profile.
 
 ## Developer fee
 
