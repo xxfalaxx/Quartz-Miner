@@ -1,4 +1,4 @@
-# Quartz-Miner
+# Quartz-Miner for Pearl V3-V4
 
 ![Quartz-Miner logo](images/logo.png)
 
