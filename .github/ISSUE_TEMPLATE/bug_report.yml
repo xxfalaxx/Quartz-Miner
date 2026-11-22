@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a Quartz-Miner crash, connection problem, or GPU compatibility issue
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Quartz-Miner version
+      placeholder: "1.0.12"
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: GPU model, NVIDIA driver and Windows version
+      placeholder: "RTX 4080 SUPER, 621.24, Windows 11"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Include the pool name and affected GPU if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or screenshots
+      description: Remove mining usernames, wallets, credentials and private paths before uploading.
