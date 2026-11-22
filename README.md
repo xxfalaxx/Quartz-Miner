@@ -2,7 +2,7 @@
 
 ![Quartz-Miner logo](images/logo.png)
 
-Quartz-Miner is a Windows miner for Pearl (PRL) V3. Version 1.0.12 is optimized for **NVIDIA GeForce RTX 40 series**. The panel manages Stratum destinations, GPU selection, live telemetry, thermal limits, and named tuning profiles.
+Quartz-Miner is a Windows x64 CUDA GPU miner for Pearl (PRL) V3 using PearlHash. Version 1.0.12 is optimized for **NVIDIA GeForce RTX 40 series**. The panel manages Stratum destinations, GPU selection, live telemetry, thermal limits, and named tuning profiles.
 
 ## Pearl V4 / FP8 development status
 
@@ -27,9 +27,9 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## Quick start
+## Download Quartz Miner for Windows
 
-1. Download `Quartz-Miner-v1.0.12-win-x64.zip` and `SHA256SUMS.txt` from [Releases](https://github.com/xxfalaxx/Quartz-Miner/releases). Compare the archive hash with the published SHA-256.
+1. Download [Quartz-Miner v1.0.12 FIX](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/Quartz-Miner-v1.0.12-win-x64-FIX.zip) and [SHA256SUMS.txt](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/SHA256SUMS.txt). Compare the archive hash with the published SHA-256.
 2. Extract the entire ZIP to a local folder and open `Quartz-Miner.Panel.exe`. The package includes its .NET and Visual C++ runtimes. When Windows requests elevation, GPU controls use the administrator context.
 3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. A fresh installation starts with blank account fields and no saved destinations or GPU profiles.
 4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. **Reset this GPU** restores the driver defaults for that card.
