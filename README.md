@@ -27,11 +27,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — Stratum recovery and GPU reset
+## FIX — Pool diagnostics, Pool/Solo and copyable log
 
-Quartz keeps mining after stale, orphaned, invalid, duplicate and other rejected shares. The log records the rejection reason when the pool supplies it. On a Stratum disconnect, Quartz checks the reachable endpoints of the same supported pool and tries them in TCP connection-latency order. The dashboard displays the connected endpoint.
-
-A local replay confirmed that the RTX 4070 Ti and RTX 4080 SUPER resumed submitting work after rejected shares and a simulated disconnect. The alternate endpoint accepted 26 Rust-verified proofs. Factory reset also passed on both cards.
+- Check all built-in pools, one selected server, or a custom TCP endpoint without entering a wallet or username. The panel shows the actual endpoint, transport, mode, latency and connection result.
+- 2Miners now supports its shared Pool endpoints over TCP 1818 and TLS 11818, as well as its distinct Solo endpoints. Pool starts selected. Solo requires an explicit selection or loading a saved Solo destination. The selector is available for supported providers.
+- The log displays errors, rejected shares, disconnects and failed checks in red. Use Ctrl+C for selected lines or **Copy log** for the history currently shown.
+- All six built-in providers completed the connectivity check from a blank profile. 2Miners Pool/TCP, Pool/TLS and Solo accepted a synthetic authorization and supplied work. Local Rust Stratum tests passed. The live check submitted no shares.
 
 ## Download Quartz Miner for Windows
 
@@ -58,15 +59,6 @@ Use the [official Pearl block explorer](https://explorer.pearlresearch.ai/) to c
 - [Gate · PEARL/USDT](https://www.gate.com/trade/PEARL_USDT)
 
 Look for Pearl Research Labs' **PEARL** asset. Some exchanges previously used **PRL**, which can also refer to a different asset. Check native Pearl deposit and withdrawal availability for your account before transferring.
-
-## Panel update — November 22, 2026
-
-- The mining-destination icon highlights the setup entry until a valid destination is applied.
-- The mining log reports block candidates with GPU and height. The dashboard checks the most recent candidate's exact hash against the canonical block at that height. Older records without a block hash remain unverified.
-- The sidebar displays the Pearl icon alongside the wallet balance.
-- Live core control verifies the requested clock under load. Supported manual settings can be sent during mining. Voltage changes and large core increases ask for confirmation.
-- Automatic fan control regulates each GPU independently. Simulated checks cover fan speed reduction below the limit and stopping at the limit or after losing telemetry.
-- Autotuning shows live test data. A completed validation can be saved and applied to one or all validated GPUs. Stop mining before loading a new autotuned profile.
 
 ## Developer fee
 
