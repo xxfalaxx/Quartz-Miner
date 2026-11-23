@@ -27,12 +27,11 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — Pool diagnostics, Pool/Solo and copyable log
+## FIX — Earlier developer fee windows
 
-- Check all built-in pools, one selected server, or a custom TCP endpoint without entering a wallet or username. The panel shows the actual endpoint, transport, mode, latency and connection result.
-- 2Miners now supports its shared Pool endpoints over TCP 1818 and TLS 11818, as well as its distinct Solo endpoints. Pool starts selected. Solo requires an explicit selection or loading a saved Solo destination. The selector is available for supported providers.
-- The log displays errors, rejected shares, disconnects and failed checks in red. Use Ctrl+C for selected lines or **Copy log** for the history currently shown.
-- All six built-in providers completed the connectivity check from a blank profile. 2Miners Pool/TCP, Pool/TLS and Solo accepted a synthetic authorization and supplied work. Local Rust Stratum tests passed. The live check submitted no shares.
+- The developer fee remains 1% of connected mining time. Quartz schedules up to 30 seconds after accruing 49 minutes 30 seconds of connected primary mining.
+- Credit carries over after a normal stop. A failed fee connection leaves the credit available for a later attempt.
+- The panel keeps primary and developer share counts separate and resumes the primary destination automatically.
 
 ## Download Quartz Miner for Windows
 
@@ -62,7 +61,7 @@ Look for Pearl Research Labs' **PEARL** asset. Some exchanges previously used **
 
 ## Developer fee
 
-The panel shows **1% Dev-Fee**. The engine schedules up to one minute of developer mining per 99 minutes of connected user mining. Pool charges are separate. Local tests do not mine to a pool.
+The panel shows **1% Dev-Fee**. Quartz schedules up to 30 seconds of developer mining after accruing 49 minutes 30 seconds of connected primary mining. A normal stop saves any time already accrued, including unspent credit from a partial fee window. Pool charges are separate. Local tests do not mine to a pool.
 
 ## Panel
 
