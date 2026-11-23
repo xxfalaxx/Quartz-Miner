@@ -16,10 +16,12 @@ Quartz integrates experimental V4 job and GPU routing. In local PearlGateway tes
 | --- | --- | --- |
 | **RTX 4070 Ti and RTX 4080 SUPER** | Optimized B24 (Ada SM 8.9) | Both models tested on hardware with Rust-verified work and accepted Pearl V3 pool shares |
 | **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each unqualified card locally before pool mining |
-| **RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
+| **Ampere RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
 | **RTX 50 and Blackwell workstation GPUs** | V3 native CUDA compatibility mode | Driver and device checks apply. RTX 50 has not been tested on hardware. V4 on RTX 50 is not qualified |
 | **Hopper and Blackwell data center GPUs** | Native CUDA compatibility mode if the Windows driver supports the device | Device qualification is pending |
-| **RTX 20, GTX, AMD and Intel** | Unsupported in this release | The packaged engine requires an Ampere-class CUDA device or later |
+| **RTX 2050 and RTX 3050 Laptop GPUs reporting 8.6** | Ampere compatibility | Local Rust preflight required; physical and pool tests pending |
+| **RTX 3050 A Laptop GPU reporting 8.9** | Native Ada B24 | Local Rust preflight required; physical and pool tests pending |
+| **Turing RTX 20 (7.5), GTX, AMD and Intel** | Unsupported in this release | The packaged engine requires an Ampere-class CUDA device or later |
 
 Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada GPUs keep the optimized B24 kernel while eligible Ampere, Hopper and Blackwell GPUs use the compatibility image. The panel verifies work from each compatibility GPU against Rust before starting pool mining. All selected GPUs share one Stratum connection.
 
@@ -27,13 +29,13 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — Multi-GPU startup and per-card results
+## FIX — V3 device selection on mixed and laptop rigs
 
-- Several GPUs can run the two-second V3 compatibility check together. Each selected card gets the full test duration.
-- Quartz matches each Rust verification receipt to the card's complete PCI address and model. Two identical cards must each provide their own result. Missing, duplicate or mismatched receipts prevent pool startup.
-- The local dashboard and pool rate table identify each card by its PCI address. Mixed rigs retain one pool session and a separate CUDA image assignment for each card.
+- Quartz checks the reported CUDA capability and full PCI address of each selected GPU. The startup inventory rejects duplicate indices or addresses, missing cards and malformed PCI identifiers. The mining log includes the PCI domain.
+- The RTX 3050 A Laptop GPU (Ada 8.9) takes the native B24 route. The ordinary RTX 3050 Laptop GPU and the RTX 2050 reporting 8.6 take the Ampere compatibility route. These three laptop models still need on-hardware Quartz proofs and pool receipts.
+- The RTX 4070 Ti and RTX 4080 SUPER retain their qualified V3 profiles. Other Ti, SUPER and Laptop variants undergo the local Rust check. The eight-model routing regression ran on CPU with synthetic device records. Physical RTX 30 and RTX 50 tests are pending.
 
-The packaged host and panel passed an offline five-card regression representing RTX 30, 40 and 50, including duplicate models on different PCI domains. On-hardware V3 qualification covers the RTX 4070 Ti and RTX 4080 SUPER. Physical RTX 30, RTX 50 and mixed-generation rig tests remain pending. RTX 20 is unsupported in this build. V4/FP8 remains experimental.
+[NVIDIA RTX 3050 A specifications](https://www.nvidia.com/en-in/geforce/laptops/compare/30-series/) · [RTX 2050 device query](https://forums.developer.nvidia.com/t/confusion-about-setting-kernel-block-and-grid-size-for-maximum-occupancy/287857)
 
 ## Download Quartz Miner for Windows
 
