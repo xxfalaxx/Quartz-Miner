@@ -18,7 +18,8 @@ Quartz integrates experimental V4 job and GPU routing. In local PearlGateway tes
 | **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each unqualified card locally before pool mining |
 | **Ampere RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
 | **RTX 50 and Blackwell workstation GPUs** | V3 native CUDA compatibility mode | Driver and device checks apply. RTX 50 has not been tested on hardware. V4 on RTX 50 is not qualified |
-| **Hopper and Blackwell data center GPUs** | Native CUDA compatibility mode if the Windows driver supports the device | Device qualification is pending |
+| **NVIDIA H100 and H200 (Hopper SM 9.0)** | Pearl V3 CUDA compatibility mode | Reported working in V3. Per-model driver and pool receipts are pending |
+| **Other Hopper and Blackwell data center GPUs** | Pearl V3 CUDA compatibility mode with a supported Windows driver | Device qualification is pending |
 | **RTX 2050 and RTX 3050 Laptop GPUs reporting 8.6** | Ampere compatibility | Local Rust preflight required; physical and pool tests pending |
 | **RTX 3050 A Laptop GPU reporting 8.9** | Native Ada B24 | Local Rust preflight required; physical and pool tests pending |
 | **Turing RTX 20 (7.5), GTX, AMD and Intel** | Unsupported in this release | The packaged engine requires an Ampere-class CUDA device or later |
