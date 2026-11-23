@@ -29,13 +29,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — V3 device selection on mixed and laptop rigs
+## FIX — temperature target, manual restart and copyable log
 
-- Quartz checks the reported CUDA capability and full PCI address of each selected GPU. The startup inventory rejects duplicate indices or addresses, missing cards and malformed PCI identifiers. The mining log includes the PCI domain.
-- The RTX 3050 A Laptop GPU (Ada 8.9) takes the native B24 route. The ordinary RTX 3050 Laptop GPU and the RTX 2050 reporting 8.6 take the Ampere compatibility route. These three laptop models still need on-hardware Quartz proofs and pool receipts.
-- The RTX 4070 Ti and RTX 4080 SUPER retain their qualified V3 profiles. Other Ti, SUPER and Laptop variants undergo the local Rust check. The eight-model routing regression ran on CPU with synthetic device records. Physical RTX 30 and RTX 50 tests are pending.
-
-[NVIDIA RTX 3050 A specifications](https://www.nvidia.com/en-in/geforce/laptops/compare/30-series/) · [RTX 2050 device query](https://forums.developer.nvidia.com/t/confusion-about-setting-kernel-block-and-grid-size-for-maximum-occupancy/287857)
+- Enter a temperature goal in **GPU / Overclock** and apply it to one GPU or all compatible GPUs. Quartz controls each card's fans independently, increases airflow when warm, holds it around the target and gradually reduces it when cool. Actual temperature depends on the cooler, workload and ambient temperature.
+- At a 60 °C goal, 61 °C increases airflow. The safety stop is 65 °C. The safety threshold is the lower of target + 5 °C and 75 °C. Missing temperature data also stops mining. Once the GPU cools, press **Start** to resume the applied destination. The log retains the stop reason.
+- Select log rows and press **Ctrl+C**, or use **Copy log** for the complete visible history. Errors are red. Mining rate and session board power clear when stopped.
+- Restored credential-free pool diagnostics, same-pool failover, Pool/Solo selection and exclusion of local test block candidates. The release retains per-PCI V3 selection on mixed rigs and the 30-second developer-fee window.
 
 ## Download Quartz Miner for Windows
 
