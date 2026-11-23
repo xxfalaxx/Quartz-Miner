@@ -1,3 +1,5 @@
 title: Quartz-Miner
-tagline: Pearl (PRL) CUDA miner for Windows
-description: "Download Quartz-Miner, a Windows x64 GPU miner for Pearl V3 (PearlHash). Optimized for NVIDIA RTX 40 and tested on the RTX 4070 Ti and RTX 4080 SUPER."
+tagline: Pearl V3 GPU miner for Windows and NVIDIA CUDA
+description: "Download Quartz-Miner for Pearl V3 (PRL) GPU mining on Windows. NVIDIA CUDA, RTX 40 optimization, Stratum pool diagnostics, and an experimental Pearl V4 FP8 roadmap."
+url: "https://xxfalaxx.github.io"
+baseurl: "/Quartz-Miner"
