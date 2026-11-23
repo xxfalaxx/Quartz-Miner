@@ -27,12 +27,18 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
+## FIX — Stratum recovery and GPU reset
+
+Quartz keeps mining after stale, orphaned, invalid, duplicate and other rejected shares. The log records the rejection reason when the pool supplies it. On a Stratum disconnect, Quartz checks the reachable endpoints of the same supported pool and tries them in TCP connection-latency order. The dashboard displays the connected endpoint.
+
+A local replay confirmed that the RTX 4070 Ti and RTX 4080 SUPER resumed submitting work after rejected shares and a simulated disconnect. The alternate endpoint accepted 26 Rust-verified proofs. Factory reset also passed on both cards.
+
 ## Download Quartz Miner for Windows
 
 1. Download [Quartz-Miner v1.0.12 FIX](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/Quartz-Miner-v1.0.12-win-x64-FIX.zip) and [SHA256SUMS.txt](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/SHA256SUMS.txt). Compare the archive hash with the published SHA-256.
 2. Extract the entire ZIP to a local folder and open `Quartz-Miner.Panel.exe`. The package includes its .NET and Visual C++ runtimes. When Windows requests elevation, GPU controls use the administrator context.
 3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. A fresh installation starts with blank account fields and no saved destinations or GPU profiles.
-4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. **Reset this GPU** restores the driver defaults for that card.
+4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. With mining stopped, use **Reset GPU** to restore the selected card's factory settings. Saved profiles remain available.
 5. Use **Stop** before closing the panel. The panel attempts to restore settings it applied for the mining session.
 
 Windows x64 and a supported NVIDIA display driver are required. Driver 621.24 was used for qualification. NVIDIA driver branch R620 or later is recommended for the included CUDA 13.5 images. Normal mining uses the bundled runtimes and requires no CUDA Toolkit, Python, Rust, or separate .NET installation. The optional external voltage-curve control requires a compatible MSI Afterburner installation on cards without native calibrated voltage controls. [CUDA driver requirements](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/)
