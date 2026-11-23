@@ -15,7 +15,7 @@ Quartz integrates experimental V4 job and GPU routing. In local PearlGateway tes
 | GPU family | Engine in 1.0.12 | Validation |
 | --- | --- | --- |
 | **RTX 4070 Ti and RTX 4080 SUPER** | Optimized B24 (Ada SM 8.9) | Both models tested on hardware with Rust-verified work and accepted Pearl V3 pool shares |
-| **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each selected model locally before pool mining |
+| **Other RTX 40 and Ada workstation GPUs** | Optimized B24 (Ada SM 8.9) | Physical testing on other models is pending. Quartz checks each unqualified card locally before pool mining |
 | **RTX 30 and Ampere workstation GPUs** | Native CUDA compatibility mode | Driver and device checks apply. Physical Ampere testing is pending |
 | **RTX 50 and Blackwell workstation GPUs** | V3 native CUDA compatibility mode | Driver and device checks apply. RTX 50 has not been tested on hardware. V4 on RTX 50 is not qualified |
 | **Hopper and Blackwell data center GPUs** | Native CUDA compatibility mode if the Windows driver supports the device | Device qualification is pending |
@@ -27,11 +27,13 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — Earlier developer fee windows
+## FIX — Multi-GPU startup and per-card results
 
-- The developer fee remains 1% of connected mining time. Quartz schedules up to 30 seconds after accruing 49 minutes 30 seconds of connected primary mining.
-- Credit carries over after a normal stop. A failed fee connection leaves the credit available for a later attempt.
-- The panel keeps primary and developer share counts separate and resumes the primary destination automatically.
+- Several GPUs can run the two-second V3 compatibility check together. Each selected card gets the full test duration.
+- Quartz matches each Rust verification receipt to the card's complete PCI address and model. Two identical cards must each provide their own result. Missing, duplicate or mismatched receipts prevent pool startup.
+- The local dashboard and pool rate table identify each card by its PCI address. Mixed rigs retain one pool session and a separate CUDA image assignment for each card.
+
+The packaged host and panel passed an offline five-card regression representing RTX 30, 40 and 50, including duplicate models on different PCI domains. On-hardware V3 qualification covers the RTX 4070 Ti and RTX 4080 SUPER. Physical RTX 30, RTX 50 and mixed-generation rig tests remain pending. RTX 20 is unsupported in this build. V4/FP8 remains experimental.
 
 ## Download Quartz Miner for Windows
 
