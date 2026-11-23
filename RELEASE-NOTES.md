@@ -1,8 +1,8 @@
 # Quartz-Miner 1.0.12 FIX
 
-## Latest FIX — live GPU controls and complete recommendations
+## Latest FIX — dashboard status and per-GPU hashrate
 
-- **Apply to this GPU** is available while mining is stopped. **Apply changes live** is available on GPUs actively mining and sends the edited core, memory, power, fan or voltage fields supported by the card. Blank fields preserve existing settings. The power-limit result reflects the driver limit in watts.
-- Core increases and low voltage settings still require confirmation where applicable. Automatic thermal control keeps ownership of the fan while enabled. An applied autotuning profile supports live power-limit changes. Stop mining to edit its other settings.
-- **Load recommendation** fills an editable draft with the community's model-specific core, memory and power settings. The draft includes a 38% fan setting and an editable voltage target of at most 920 mV. Where the community did not report voltage, 890 mV is the starting point. Review the draft before applying it.
-- Restored the package pins for the V3 compatibility image and deployed B24 autotuning kernel. The CPU package replay checks mixed RTX 30, RTX 40, RTX 50 and Hopper routing. Physical qualification covers RTX 4070 Ti and RTX 4080 SUPER. H100 and H200 operation was reported separately. Physical RTX 30, RTX 50 and additional data-center qualification is pending.
+- The dashboard shows local hashrate for each GPU alongside its share counters. Rates clear when mining stops.
+- Accepted shares, verified settings and established pool connections are shown in green. Errors, rejected shares and stops are red. Pending actions and stale shares use amber.
+- Fresh installations start with blank account fields and no selected or saved mining destination, custom pool or GPU profile. The built-in pool catalogue is available for setup.
+- The package retains its V3 engine. The RTX 4070 Ti and RTX 4080 SUPER were tested on physical hardware with accepted V3 shares. Physical RTX 30 and RTX 50 qualification is pending. FP8 Ada and other unqualified V4 routes are disabled in the public package.
