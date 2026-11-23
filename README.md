@@ -29,12 +29,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## FIX — temperature target, manual restart and copyable log
+## Latest FIX — flexible GPU tuning and model recommendations
 
-- Enter a temperature goal in **GPU / Overclock** and apply it to one GPU or all compatible GPUs. Quartz controls each card's fans independently, increases airflow when warm, holds it around the target and gradually reduces it when cool. Actual temperature depends on the cooler, workload and ambient temperature.
-- At a 60 °C goal, 61 °C increases airflow. The safety stop is 65 °C. The safety threshold is the lower of target + 5 °C and 75 °C. Missing temperature data also stops mining. Once the GPU cools, press **Start** to resume the applied destination. The log retains the stop reason.
-- Select log rows and press **Ctrl+C**, or use **Copy log** for the complete visible history. Errors are red. Mining rate and session board power clear when stopped.
-- Restored credential-free pool diagnostics, same-pool failover, Pool/Solo selection and exclusion of local test block candidates. The release retains per-PCI V3 selection on mixed rigs and the 30-second developer-fee window.
+- GPU tuning starts blank. Choose a saved profile or enter the settings you want to change. Empty fields preserve the current settings.
+- Both Apply controls can change the core during mining. Native clock control passes the requested frequency to NVIDIA. The panel reports the measured clock under load. Explicit voltage still requires a supported driver calibration or an available V/F curve.
+- **Load recommendation** fills an editable draft for the selected model. Quartz measurements supply the RTX 4070 Ti and RTX 4080 SUPER reference values. Other exact-model entries use the [PeakMiner OC Bench](https://oc.peakminer.org/) community snapshot. Community profiles fill core and power only. Apply the draft after reviewing it.
+- V3 startup checks the driver resources by PCI on compatibility GPUs. Share replies are tracked by request ID and rejected shares are attributed by PCI where available. Physical RTX 30 and RTX 50 qualification is pending.
 
 ## Download Quartz Miner for Windows
 
