@@ -92,3 +92,12 @@ The Dashboard shows live market and network data from a clean installation with 
 ## Report a problem
 
 Use [Issues → New issue](https://github.com/xxfalaxx/Quartz-Miner/issues/new/choose) and select **Bug report**. Include the release version, GPU model, NVIDIA driver and the steps to reproduce. Remove mining accounts, wallet addresses, credentials and private paths from attachments.
+
+
+## MSI Afterburner voltage curve and overclocking
+
+1. In MSI Afterburner, select the GPU, adjust its voltage/frequency (V/F) curve, **apply it and save the profile**.
+2. In Quartz-Miner, select the same GPU and apply the desired overclock values. Use the stopped or live apply button as appropriate.
+3. While mining, verify actual core and memory clocks, voltage, power and temperature. Entering a target does not guarantee the voltage under load.
+
+**Without an applied V/F curve, voltage can rise:** one operator observed 990 mV. Results depend on the GPU, driver and settings. Applying a curve in MSI does not guarantee Quartz can write to it; arbitrary voltage points via Afterburner remain unqualified and Quartz reports when V/F writing is unavailable. The separately calibrated 890 mV route is limited to the tested GPU and clocks described above.
