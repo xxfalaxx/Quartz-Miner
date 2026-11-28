@@ -40,12 +40,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## Latest FIX — Titanium multicoin and pool recovery
+## Latest FIX — portable settings and verified GPU controls
 
-- Select a coin and regional server in **Pools & destinations**. A fresh installation opens with blank payout fields. Replace the files in the same installation folder to retain existing settings.
-- After a transport failure, Quartz retries the selected server three times, waiting five seconds before each attempt. It then probes other eligible servers of the same pool and mode and chooses the reachable server with the lowest measured TCP latency.
-- The packaged panel completed live stop/restart and developer-fee cycles on an RTX 4070 Ti with RPlant and HeroMiners. An isolated test ledger was seeded close to the fee boundary. Both pools accepted primary shares after restart. Both fans, clock locks and the factory power setting were restored.
-- CPU verification passed 85 Rust tests, the three-coin WPF destination checks and a timed Pearl failover test using loopback servers.
+- A fresh extraction opens with empty payout, server, manual port, thermal target, tuning loss and overclock fields. Saved preferences belong to the installation's `user-settings` folder. Keep this folder when updating in place. When moving from an older release, **Import previous settings** is available in an empty installation.
+- Core and VRAM clock edits work independently. The panel checks the requested power limit against the live NVIDIA reading and logs a persistent mismatch once. Voltage and core adjustments remain pending until telemetry confirms them under load. External V/F control requires an enabled, supported MSI Afterburner curve.
+- On the RTX 4070 Ti, the panel applied 205 W before load and changed the limit to 200 W during local Pearl V3 work. Under load it reported 2,580 MHz core, 405 MHz VRAM and 900 mV. The fan target was 90%. Factory power (285 W) and automatic control of both fans were verified after stopping.
+- CPU regression tests covered 14 empty configuration fields, per-installation isolation, all five saved OC values, three coin destinations, repeated telemetry mismatches and recovery, and the bundled B24 and SmartTune hosts.
 
 ## Download Quartz Miner for Windows
 
