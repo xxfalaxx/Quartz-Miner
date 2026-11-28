@@ -1,9 +1,10 @@
 # Quartz-Miner 1.0.12 FIX
 
-## Latest FIX — settings per installation
+## Latest FIX — Titanium multicoin and pool recovery
 
-- Extract into a new folder to start with blank mining identity fields and no saved destination, custom pool or GPU profile. The built-in pool catalog is available for setup.
-- To keep the settings of an installation using this FIX, close Quartz-Miner and replace the release files in that same folder. A different folder keeps its own settings.
-- Users of older releases can opt in to a one-time import from the legacy shared Windows profile. Quartz-Miner asks first and leaves the legacy files in place.
-- The dashboard retains local hashrate per GPU and the same status colors for verified actions, pending changes, stale shares and failures.
-- The V3 engine is unchanged. The RTX 4070 Ti and RTX 4080 SUPER have physical validation and accepted V3 shares. RTX 30 and RTX 50 physical qualification remains pending. Unqualified V4 routes remain disabled.
+- Select a coin and regional server in **Pools & destinations**. A fresh installation opens with blank payout fields. Replace the files in the same installation folder to retain existing settings.
+- After a transport failure, Quartz retries the selected server three times, waiting five seconds before each attempt. It then probes other eligible servers of the same pool and mode and chooses the reachable server with the lowest measured TCP latency.
+- The packaged panel completed live stop/restart and developer-fee cycles on an RTX 4070 Ti with RPlant and HeroMiners. An isolated test ledger was seeded close to the fee boundary. Both pools accepted primary shares after restart. Both fans, clock locks and the factory power setting were restored.
+- CPU verification passed 85 Rust tests, the three-coin WPF destination checks and a timed Pearl failover test using loopback servers.
+
+**Windows ZIP SHA-256** `52ac5644514af693d83fffaa859c009103c9afca3cb8e127a3c7ed9a735421fa`

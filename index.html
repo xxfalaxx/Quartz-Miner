@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quartz-Miner — Pearl (PRL) GPU Miner for Windows</title>
-  <meta name="description" content="Download Quartz-Miner for Pearl V3 on Windows. NVIDIA CUDA mining, RTX 40 optimization, live GPU controls, autotuning and Stratum pool failover.">
+  <title>Quartz-Miner — Pearl, NOID and Quantus GPU Miner for Windows</title>
+  <meta name="description" content="Download Quartz-Miner for Pearl V3, NOID and Quantus on Windows. NVIDIA CUDA mining, RTX 40 optimization, live GPU controls, autotuning and Stratum pool failover.">
   <link rel="canonical" href="https://xxfalaxx.github.io/Quartz-Miner/">
   <link rel="icon" href="images/logo.png" type="image/png">
   <meta name="theme-color" content="#091519">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://xxfalaxx.github.io/Quartz-Miner/">
-  <meta property="og:title" content="Quartz-Miner — Pearl GPU Mining">
-  <meta property="og:description" content="Pearl V3 mining for Windows and NVIDIA CUDA. Download the latest release and check GPU compatibility.">
+  <meta property="og:title" content="Quartz-Miner — Pearl, NOID and Quantus GPU Mining">
+  <meta property="og:description" content="Pearl V3, NOID and Quantus mining for Windows and NVIDIA CUDA. Download the latest release and check GPU compatibility.">
   <meta property="og:image" content="https://xxfalaxx.github.io/Quartz-Miner/images/dashboard.png">
   <meta name="twitter:card" content="summary_large_image">
   <style>
@@ -72,8 +72,8 @@
   <main class="wrap">
     <div class="hero">
       <div>
-        <h1>Pearl mining <span>on NVIDIA.</span></h1>
-        <p class="intro">Quartz-Miner runs Pearl V3 on Windows with a CUDA engine optimized for RTX 40. Manage your pools and tune each GPU from one panel.</p>
+        <h1>Pearl, NOID and Quantus <span>on NVIDIA.</span></h1>
+        <p class="intro">Mine Pearl V3, NOID or Quantus on Windows. Choose a regional server, follow accepted shares and tune each GPU in the Titanium panel.</p>
         <div class="actions">
           <a class="button download" id="download" href="https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/Quartz-Miner-v1.0.12-win-x64-FIX.zip">Download for Windows</a>
           <a class="button" href="https://github.com/xxfalaxx/Quartz-Miner">View on GitHub</a>
@@ -89,7 +89,7 @@
     <section id="features" aria-labelledby="features-title">
       <h2 id="features-title">Manage your mining session</h2>
       <div class="cards">
-        <article class="card"><h3>Pool controls</h3><p>Test pool connections without a wallet, save Stratum destinations, and choose Pool or Solo where supported. Failover tries reachable servers at the same pool.</p></article>
+        <article class="card"><h3>Pool controls</h3><p>Test pool connections without a wallet, save Stratum destinations, and choose Pool or Solo where supported. After three retries spaced five seconds apart, Quartz tries the lowest-latency reachable server of the same pool and mode.</p></article>
         <article class="card"><h3>GPU tuning</h3><p>Monitor hashrate, power and temperature. Adjust supported GPU settings, set a fan temperature target, save profiles and reset a board to factory settings.</p></article>
         <article class="card"><h3>Share diagnostics</h3><p>Track accepted, stale and rejected shares. Copy the session log and check recent block candidates against Pearl’s canonical chain.</p></article>
       </div>
@@ -97,9 +97,9 @@
     <section class="requirements" id="compatibility" aria-labelledby="compatibility-title">
       <div><h2 id="compatibility-title">GPU compatibility</h2><p class="intro">Requires Windows x64 and a compatible NVIDIA driver. The ZIP bundles the application runtimes.</p><a href="https://github.com/xxfalaxx/Quartz-Miner#nvidia-gpu-compatibility">Full compatibility and setup</a></div>
       <dl>
-        <dt>Tested on hardware</dt><dd>RTX 4070 Ti and RTX 4080 SUPER, with accepted Pearl V3 pool work.</dd>
+        <dt>Tested on hardware</dt><dd>RTX 4070 Ti on all three coins and RTX 4080 SUPER on Pearl V3, with accepted Pearl V3 pool work.</dd>
         <dt>Compatibility mode</dt><dd>Eligible RTX 30, RTX 50, Hopper and Blackwell cards. Physical qualification is pending. Eligible Ada GPUs retain B24 in mixed rigs.</dd>
-        <dt>Pearl V4 / FP8</dt><dd>Experimental Ada routing has passed local tests. The public ZIP currently mines Pearl V3.</dd>
+        <dt>Pearl V4 / FP8</dt><dd>Experimental Ada routing has passed local tests. Pearl V3 is the public Pearl route.</dd>
       </dl>
     </section>
     <footer><span>Quartz-Miner</span><div class="links"><a href="https://github.com/xxfalaxx/Quartz-Miner/issues/new/choose">Report a bug</a><a href="https://github.com/xxfalaxx/Quartz-Miner/discussions/1">Share test results</a></div></footer>

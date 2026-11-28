@@ -2,15 +2,25 @@
 
 ![Quartz-Miner logo](images/logo.png)
 
-Quartz-Miner is a Windows x64 CUDA GPU miner for Pearl (PRL) V3 using PearlHash. Version 1.0.12 is optimized for **NVIDIA GeForce RTX 40 series**. The panel manages Stratum destinations, GPU selection, live telemetry, thermal limits, and named tuning profiles.
+Quartz-Miner 1.0.12 FIX is a Windows x64 NVIDIA CUDA miner for Pearl V3 (PRL), Parano1d (NOID) and Quantus (QTC). The Titanium panel keeps each coin's wallet and server separate. The developer fee is 1% of connected mining time.
+
+| Coin | Public mining route | Hardware validation |
+| --- | --- | --- |
+| Pearl V3 | B24 on RTX 40; compatible NVIDIA models use their own native image | RTX 4070 Ti and RTX 4080 SUPER, including Rust and accepted pool shares in earlier tests |
+| NOID | RPlant, three regional TLS servers | RTX 4070 Ti, Rust-checked work and accepted pool shares |
+| Quantus | HeroMiners, eleven regional TLS servers | RTX 4070 Ti, Rust-checked work and accepted pool shares |
+
+Other native targets for NOID and Quantus have offline build coverage. Tests on additional physical GPU models, including RTX 50, are pending.
 
 ## Pearl V4 / FP8 development status
 
 Quartz integrates experimental V4 job and GPU routing. In local PearlGateway tests, a factory-profile RTX 4070 Ti computed fresh FP8 tickets for V4 jobs. Rust verified each proof before submission and the receiving service verified the same bytes. When the job changed during CUDA execution, Quartz withheld the superseded proof and sent only the current one.
 
-**The public ZIP mines V3.** B24 remains the production engine for eligible Ada GPUs. FP8 Ada is disabled in production pending Pearl profile admission and validation with a compatible testnet pool. Local gateway results do not establish mainnet or pool support. RTX 50 hardware testing is pending.
+**For Pearl, the public ZIP mines V3.** B24 remains the production engine for eligible Ada GPUs. FP8 Ada is disabled in production pending Pearl profile admission and validation with a compatible testnet pool. Local gateway results do not establish mainnet or pool support. RTX 50 hardware testing is pending.
 
 ## NVIDIA GPU compatibility
+
+The table below covers Pearl V3.
 
 | GPU family | Engine in 1.0.12 | Validation |
 | --- | --- | --- |
@@ -30,20 +40,19 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## Latest FIX — settings per installation
+## Latest FIX — Titanium multicoin and pool recovery
 
-- Extract into a new folder to start with blank mining identity fields and no saved destination, custom pool or GPU profile. The built-in pool catalog is available for setup.
-- To keep the settings of an installation using this FIX, close Quartz-Miner and replace the release files in that same folder. A different folder keeps its own settings.
-- Users of older releases can opt in to a one-time import from the legacy shared Windows profile. Quartz-Miner asks first and leaves the legacy files in place.
-- The dashboard retains local hashrate per GPU and the same status colors for verified actions, pending changes, stale shares and failures.
-- The V3 engine is unchanged. The RTX 4070 Ti and RTX 4080 SUPER have physical validation and accepted V3 shares. RTX 30 and RTX 50 physical qualification remains pending. Unqualified V4 routes remain disabled.
+- Select a coin and regional server in **Pools & destinations**. A fresh installation opens with blank payout fields. Replace the files in the same installation folder to retain existing settings.
+- After a transport failure, Quartz retries the selected server three times, waiting five seconds before each attempt. It then probes other eligible servers of the same pool and mode and chooses the reachable server with the lowest measured TCP latency.
+- The packaged panel completed live stop/restart and developer-fee cycles on an RTX 4070 Ti with RPlant and HeroMiners. An isolated test ledger was seeded close to the fee boundary. Both pools accepted primary shares after restart. Both fans, clock locks and the factory power setting were restored.
+- CPU verification passed 85 Rust tests, the three-coin WPF destination checks and a timed Pearl failover test using loopback servers.
 
 ## Download Quartz Miner for Windows
 
 1. Download [Quartz-Miner v1.0.12 FIX](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/Quartz-Miner-v1.0.12-win-x64-FIX.zip) and [SHA256SUMS.txt](https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/SHA256SUMS.txt). Compare the archive hash with the published SHA-256.
 2. Extract the entire ZIP to a local folder and open `Quartz-Miner.Panel.exe`. The package includes its .NET and Visual C++ runtimes. When Windows requests elevation, GPU controls use the administrator context.
-3. Open **Mining destination**, select a pool and server, and enter your PRL wallet or that pool's supported mining username. Apply the destination and give it a name if you want to save it. A fresh installation starts with blank account fields and no saved destinations or GPU profiles.
-4. Choose your GPUs on the **Dashboard**. Run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. With mining stopped, use **Reset GPU** to restore the selected card's factory settings. Saved profiles remain available.
+3. Open **Mining destination**, select a pool and server, and enter the receiving address for the selected coin or a supported Pearl mining username. Apply the destination and give it a name if you want to save it. A fresh installation starts with blank account fields and no saved destinations or GPU profiles.
+4. Choose your GPUs on the **Dashboard**. For Pearl, run **Local test**, then **Start**. Use **GPU / Overclock** for per-card settings, model groups and thermal limits. With mining stopped, use **Reset GPU** to restore the selected card's factory settings. Saved profiles remain available.
 5. Use **Stop** before closing the panel. The panel attempts to restore settings it applied for the mining session.
 
 Windows x64 and a supported NVIDIA display driver are required. Driver 621.24 was used for qualification. NVIDIA driver branch R620 or later is recommended for the included CUDA 13.5 images. Normal mining uses the bundled runtimes and requires no CUDA Toolkit, Python, Rust, or separate .NET installation. The optional external voltage-curve control requires a compatible MSI Afterburner installation on cards without native calibrated voltage controls. [CUDA driver requirements](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/)
