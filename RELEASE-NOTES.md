@@ -1,12 +1,15 @@
 # Quartz-Miner 1.0.12 FIX
 
-## Latest FIX — dashboard, pool hashrate and GPU recovery
+## Latest FIX — startup and GPU controls
 
-- The three coin cards display current prices, 24-hour change, chain height, difficulty, estimated network hashrate and block rewards when the sources publish them.
-- A fresh Pearl installation prompts you to select a pool. Quantus reads the public HeroMiners pool total and NOID reads the public RPlant pool total. These readings are independent of the local GPU rate or worker rate.
-- Quartz can complete a pending GPU restoration when a disabled, readable MSI Afterburner V/F curve already matches the verified original state. Leave **Force constant voltage** disabled.
-- The clean Windows package passed 20 CPU checks and live Dashboard and pool-display checks without starting mining. The saved GPU recovery was verified on the idle RTX 4070 Ti.
+- Fixes the B24 startup integrity mismatch and reports launch errors in the log.
+- Confirms supported memory-clock and power-limit changes under load and restores session tuning on exit. Run the panel as administrator for GPU controls.
+- The calibrated 890 mV profile recognizes the tested RTX 4070 Ti at its recorded PCI locations, at 2,580 or 2,610 MHz core. Loaded voltage may differ from the request.
+- Confirmed settings use colors against NVIDIA-reported boost clocks or factory power.
+- A clean package passed CPU panel checks. A short B24 HeroMiners test on the RTX 4070 Ti received one accepted share and no stale or rejected shares; this is not a long-duration stability test.
 
-Extract the entire Windows x64 ZIP and open **Quartz-Miner.Panel.exe**. Verify the archive against **SHA256SUMS.txt**. Keep **user-settings** when updating in place.
+**Known limitation:** Other voltage points through MSI Afterburner require a writable V/F curve and remain unvalidated. Confirm the actual voltage under load.
 
-**Windows ZIP SHA-256** bf5684f9770b1084e275b0a0aa85f33caf1ae1872aa514db5a6c8fb711776721
+Extract the Windows x64 ZIP into its own folder and open **Quartz-Miner.Panel.exe** as administrator. A new installation has no saved identities, destinations or tuning profiles. Keep **user-settings** when updating in place. Verify the ZIP against **SHA256SUMS.txt**.
+
+**Windows ZIP SHA-256:** `1906109da3dfcbb390f1b2d974f69619e35697f1a63aecc2f8b5d029cdebd97b`
