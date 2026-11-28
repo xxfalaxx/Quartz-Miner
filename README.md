@@ -40,12 +40,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## Latest FIX — dashboard, pool hashrate and GPU recovery
+## Latest FIX — startup and GPU controls
 
-- The three coin cards display current prices, 24-hour change, chain height, difficulty, estimated network hashrate and block rewards when the sources publish them.
-- A fresh Pearl installation prompts you to select a pool. Quantus reads the public HeroMiners pool total and NOID reads the public RPlant pool total. These readings are independent of the local GPU rate or worker rate.
-- Quartz can complete a pending GPU restoration when a disabled, readable MSI Afterburner V/F curve already matches the verified original state. Leave **Force constant voltage** disabled.
-- The clean Windows package passed 20 CPU checks and live Dashboard and pool-display checks without starting mining. The saved GPU recovery was verified on the idle RTX 4070 Ti.
+- Fixes a B24 startup integrity mismatch and reports launch errors in the log.
+- Confirms supported memory-clock and power-limit changes under load and restores session tuning on exit. Run the panel as administrator for GPU controls.
+- The calibrated 890 mV profile recognizes the tested RTX 4070 Ti at its recorded PCI locations, at 2,580 or 2,610 MHz core. Loaded voltage may differ from the request. General voltage points through MSI Afterburner require a writable V/F curve and remain unvalidated; confirm actual voltage under load.
+- Confirmed settings use colors against NVIDIA-reported boost clocks or factory power. A clean package passed CPU panel checks, and a short B24 HeroMiners test on the RTX 4070 Ti received one accepted share with no stale or rejected shares. This is not a long-duration stability test.
 
 ## Download Quartz Miner for Windows
 
