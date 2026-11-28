@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://xxfalaxx.github.io/Quartz-Miner/">
   <meta property="og:title" content="Quartz-Miner — Pearl, NOID and Quantus GPU Mining">
   <meta property="og:description" content="Pearl V3, NOID and Quantus mining for Windows and NVIDIA CUDA. Download the latest release and check GPU compatibility.">
-  <meta property="og:image" content="https://xxfalaxx.github.io/Quartz-Miner/images/dashboard.png">
+  <meta property="og:image" content="https://xxfalaxx.github.io/Quartz-Miner/titanium-dashboard.png">
   <meta name="twitter:card" content="summary_large_image">
   <style>
     :root { color-scheme:dark; --bg:#091519; --panel:#101f25; --text:#effaf8; --muted:#a6c0c3; --edge:#294048; --mint:#84f6c7; font:16px/1.55 system-ui,sans-serif; }
@@ -57,6 +57,7 @@
     @media(max-width:850px) { .hero,.requirements { grid-template-columns:1fr; } .intro { max-width:55ch; } }
     @media(max-width:635px) { .wrap { width:calc(100% - 2rem); } .cards { grid-template-columns:1fr; } nav { padding-block:.75rem; } }
   </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Quartz-Miner", "softwareVersion": "1.0.12 FIX", "operatingSystem": "Windows x64", "applicationCategory": "UtilitiesApplication", "url": "https://xxfalaxx.github.io/Quartz-Miner/", "screenshot": ["https://xxfalaxx.github.io/Quartz-Miner/titanium-dashboard.png", "https://xxfalaxx.github.io/Quartz-Miner/titanium-overclock.png", "https://xxfalaxx.github.io/Quartz-Miner/titanium-rplant.png", "https://xxfalaxx.github.io/Quartz-Miner/titanium-herominers.png"], "featureList": ["Titanium dashboard with Pearl V3, NOID and Quantus, per-GPU hashrate and efficiency", "GPU and overclock controls for cards and model groups", "NOID mining destination on RPlant over TLS", "Quantus mining destination on HeroMiners over TLS"]}</script>
 </head>
 <body>
   <header>
@@ -82,8 +83,8 @@
           <a id="checksum" href="https://github.com/xxfalaxx/Quartz-Miner/releases/download/v1.0.12/SHA256SUMS.txt">Verify SHA-256</a> · <a href="https://github.com/xxfalaxx/Quartz-Miner/releases/latest">Release notes</a></p>
       </div>
       <figure>
-        <figcaption class="frame">Quartz-Miner dashboard</figcaption>
-        <img src="images/dashboard.png" alt="Quartz-Miner dashboard showing two NVIDIA GPUs, live board power, pool status and shares">
+        <figcaption class="frame">Titanium dashboard · offline</figcaption>
+        <img src="titanium-dashboard.png" alt="Titanium dashboard with Pearl V3, NOID and Quantus, per-GPU hashrate and efficiency">
       </figure>
     </div>
     <section id="features" aria-labelledby="features-title">
@@ -94,6 +95,7 @@
         <article class="card"><h3>Share diagnostics</h3><p>Track accepted, stale and rejected shares. Copy the session log and check recent block candidates against Pearl’s canonical chain.</p></article>
       </div>
     </section>
+<section id="destinations"><h2>Pool destinations and GPU controls</h2><p>Select a separate receiving address and regional server for each coin. Screenshots show a clean, offline session.</p><div class="cards"><figure><a href="titanium-overclock.png"><img loading="lazy" src="titanium-overclock.png" alt="GPU and overclock controls for cards and model groups"></a><figcaption>GPU and overclock controls for cards and model groups</figcaption></figure><figure><a href="titanium-rplant.png"><img loading="lazy" src="titanium-rplant.png" alt="NOID mining destination on RPlant over TLS"></a><figcaption>NOID mining destination on RPlant over TLS</figcaption></figure><figure><a href="titanium-herominers.png"><img loading="lazy" src="titanium-herominers.png" alt="Quantus mining destination on HeroMiners over TLS"></a><figcaption>Quantus mining destination on HeroMiners over TLS</figcaption></figure></div></section>
     <section class="requirements" id="compatibility" aria-labelledby="compatibility-title">
       <div><h2 id="compatibility-title">GPU compatibility</h2><p class="intro">Requires Windows x64 and a compatible NVIDIA driver. The ZIP bundles the application runtimes.</p><a href="https://github.com/xxfalaxx/Quartz-Miner#nvidia-gpu-compatibility">Full compatibility and setup</a></div>
       <dl>

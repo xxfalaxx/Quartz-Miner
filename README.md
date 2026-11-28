@@ -77,11 +77,17 @@ Look for Pearl Research Labs' **PEARL** asset. Some exchanges previously used **
 
 The panel shows **1% Dev-Fee**. Quartz schedules up to 30 seconds of developer mining after accruing 49 minutes 30 seconds of connected primary mining. A normal stop saves any time already accrued, including unspent credit from a partial fee window. Pool charges are separate. Local tests do not mine to a pool.
 
-## Panel
+## Titanium panel
 
-![Quartz-Miner dashboard with the tested RTX 4070 Ti and RTX 4080 SUPER detected](images/dashboard.png)
+Screenshots from the published Windows application in a clean, offline session. Mining and telemetry are idle.
 
-![Quartz-Miner GPU tuning and thermal controls](images/gpu-controls.png)
+![Titanium dashboard with Pearl V3, NOID and Quantus, per-GPU hashrate and efficiency](titanium-dashboard.png)
+
+![GPU and overclock controls for cards and model groups](titanium-overclock.png)
+
+![NOID mining destination on RPlant over TLS](titanium-rplant.png)
+
+![Quantus mining destination on HeroMiners over TLS](titanium-herominers.png)
 
 ## Report a problem
 
