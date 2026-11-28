@@ -40,12 +40,12 @@ Quartz selects the CUDA image by each GPU’s PCI address. In a mixed rig, Ada G
 
 Autotuning is available on the two qualified models. Clock, fan, voltage and power controls depend on the individual card and driver.
 
-## Latest FIX — portable settings and verified GPU controls
+## Latest FIX — dashboard, pool hashrate and GPU recovery
 
-- A fresh extraction opens with empty payout, server, manual port, thermal target, tuning loss and overclock fields. Saved preferences belong to the installation's `user-settings` folder. Keep this folder when updating in place. When moving from an older release, **Import previous settings** is available in an empty installation.
-- Core and VRAM clock edits work independently. The panel checks the requested power limit against the live NVIDIA reading and logs a persistent mismatch once. Voltage and core adjustments remain pending until telemetry confirms them under load. External V/F control requires an enabled, supported MSI Afterburner curve.
-- On the RTX 4070 Ti, the panel applied 205 W before load and changed the limit to 200 W during local Pearl V3 work. Under load it reported 2,580 MHz core, 405 MHz VRAM and 900 mV. The fan target was 90%. Factory power (285 W) and automatic control of both fans were verified after stopping.
-- CPU regression tests covered 14 empty configuration fields, per-installation isolation, all five saved OC values, three coin destinations, repeated telemetry mismatches and recovery, and the bundled B24 and SmartTune hosts.
+- The three coin cards display current prices, 24-hour change, chain height, difficulty, estimated network hashrate and block rewards when the sources publish them.
+- A fresh Pearl installation prompts you to select a pool. Quantus reads the public HeroMiners pool total and NOID reads the public RPlant pool total. These readings are independent of the local GPU rate or worker rate.
+- Quartz can complete a pending GPU restoration when a disabled, readable MSI Afterburner V/F curve already matches the verified original state. Leave **Force constant voltage** disabled.
+- The clean Windows package passed 20 CPU checks and live Dashboard and pool-display checks without starting mining. The saved GPU recovery was verified on the idle RTX 4070 Ti.
 
 ## Download Quartz Miner for Windows
 
@@ -79,7 +79,7 @@ The panel shows **1% Dev-Fee**. Quartz schedules up to 30 seconds of developer m
 
 ## Titanium panel
 
-Screenshots from the published Windows application in a clean, offline session. Mining and telemetry are idle.
+The Dashboard shows live market and network data from a clean installation with mining stopped. The GPU / Overclock image uses a simulated card and blank settings.
 
 ![Titanium dashboard with Pearl V3, NOID and Quantus, per-GPU hashrate and efficiency](titanium-dashboard.png)
 
